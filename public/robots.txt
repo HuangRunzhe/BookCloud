@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# 主要页面
+Allow: /landing
+Allow: /login
+Allow: /register
+
+# 禁止爬取用户私有数据
+Disallow: /book/
+Disallow: /profile/
+Disallow: /statistics/
+Disallow: /add/
+Disallow: /batch-add/
+Disallow: /batch-upload/
+
+# 禁止爬取API和后台文件
+Disallow: /api/
+Disallow: /backend/
+Disallow: /uploads/
+
+# 站点地图
+Sitemap: https://bc.aikits.sbs/sitemap.xml
+
+# 爬取延迟（可选）
+Crawl-delay: 1
