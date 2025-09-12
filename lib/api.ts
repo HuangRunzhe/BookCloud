@@ -9,15 +9,15 @@ const getApiBaseUrl = () => {
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return 'http://localhost:8000'
     } else if (hostname === 'bc.aikits.sbs') {
-      return 'https://bcbk.aikits.sbs'
+      return 'http://bcbk.aikits.sbs'
     } else if (hostname === 'bcbk.aikits.sbs') {
-      return 'https://bcbk.aikits.sbs'
+      return 'http://bcbk.aikits.sbs'
     } else {
       return `http://${hostname}:8000`
     }
   }
   // 服务端环境
-  return process.env.NEXT_PUBLIC_API_URL || 'https://bcbk.aikits.sbs'
+  return process.env.NEXT_PUBLIC_API_URL || 'http://bcbk.aikits.sbs'
 }
 
 const API_BASE_URL = getApiBaseUrl()

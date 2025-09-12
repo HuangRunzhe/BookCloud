@@ -44,6 +44,10 @@ export default function PaymentPage() {
       const hostname = window.location.hostname
       if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://localhost:8000'
+      } else if (hostname === 'bc.aikits.sbs') {
+        return 'http://bcbk.aikits.sbs'
+      } else if (hostname === 'bcbk.aikits.sbs') {
+        return 'http://bcbk.aikits.sbs'
       } else {
         return `http://${hostname}:8000`
       }
