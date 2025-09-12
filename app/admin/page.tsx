@@ -409,8 +409,8 @@ export default function AdminPage() {
                   const formData = new FormData(e.target as HTMLFormElement)
                   updateUserPermissions(editingUser.id, {
                     can_use_system: formData.get('can_use_system') === 'on',
-                    membership_status: String(formData.get('membership_status') || ''),
-                    membership_expires_at: formData.get('membership_expires_at') ? String(formData.get('membership_expires_at')) : undefined
+                    membership_status: (formData.get('membership_status') as string) || '',
+                    membership_expires_at: (formData.get('membership_expires_at') as string) || undefined
                   })
                 }}>
                   <div className="mb-4">
