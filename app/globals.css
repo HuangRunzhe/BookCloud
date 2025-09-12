@@ -1,27 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-gray-50 min-h-screen;
+  }
+  
+  * {
+    @apply border-secondary-200;
   }
 }
 
 @layer components {
+  /* 卡片组件 */
+  .card {
+    @apply bg-white rounded-lg shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-md;
+  }
+  
+  .card-elevated {
+    @apply bg-white rounded-lg shadow-md border border-gray-200 transition-all duration-300 hover:shadow-lg;
+  }
+  
   .book-card {
-    @apply bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 p-4;
+    @apply card p-6 cursor-pointer;
+  }
+  
+  .book-card:hover {
+    @apply shadow-lg;
+  }
+  
+  /* 按钮组件 */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed;
   }
   
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply btn bg-blue-600 text-white shadow-sm hover:bg-blue-700 hover:shadow-md focus:ring-blue-200;
   }
   
   .btn-secondary {
-    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    @apply btn bg-gray-100 text-gray-700 border border-gray-300 hover:bg-gray-200 focus:ring-gray-200;
+  }
+  
+  .btn-success {
+    @apply btn bg-green-600 text-white shadow-sm hover:bg-green-700 hover:shadow-md focus:ring-green-200;
+  }
+  
+  .btn-warning {
+    @apply btn bg-yellow-600 text-white shadow-sm hover:bg-yellow-700 hover:shadow-md focus:ring-yellow-200;
+  }
+  
+  .btn-danger {
+    @apply btn bg-red-600 text-white shadow-sm hover:bg-red-700 hover:shadow-md focus:ring-red-200;
+  }
+  
+  .btn-ghost {
+    @apply btn bg-transparent text-secondary-600 hover:bg-secondary-100 hover:text-secondary-800 focus:ring-secondary-300;
+  }
+  
+  .btn-outline {
+    @apply btn bg-transparent border-2 border-primary-500 text-primary-600 hover:bg-primary-500 hover:text-white focus:ring-primary-300;
+  }
+  
+  /* 输入框组件 */
+  .input {
+    @apply w-full px-4 py-3 bg-white/80 backdrop-blur-sm border border-secondary-200 rounded-xl text-secondary-900 placeholder-secondary-500 focus:outline-none focus:ring-4 focus:ring-primary-300 focus:border-primary-500 transition-all duration-300;
   }
   
   .input-field {
-    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+    @apply input;
+  }
+  
+  .input-error {
+    @apply input border-danger-500 focus:ring-danger-300 focus:border-danger-500;
+  }
+  
+  /* 标签组件 */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 text-xs font-semibold rounded-full;
+  }
+  
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-800;
+  }
+  
+  .badge-success {
+    @apply badge bg-success-100 text-success-800;
+  }
+  
+  .badge-warning {
+    @apply badge bg-warning-100 text-warning-800;
+  }
+  
+  .badge-danger {
+    @apply badge bg-danger-100 text-danger-800;
+  }
+  
+  .badge-secondary {
+    @apply badge bg-secondary-100 text-secondary-800;
+  }
+  
+  /* 状态指示器 */
+  .status-dot {
+    @apply w-2 h-2 rounded-full;
+  }
+  
+  .status-online {
+    @apply status-dot bg-success-500;
+  }
+  
+  .status-offline {
+    @apply status-dot bg-secondary-400;
+  }
+  
+  .status-busy {
+    @apply status-dot bg-warning-500;
+  }
+  
+  .status-error {
+    @apply status-dot bg-danger-500;
+  }
+  
+  /* 加载动画 */
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-secondary-200 border-t-primary-500;
+  }
+  
+  .loading-dots {
+    @apply flex space-x-1;
+  }
+  
+  .loading-dots > div {
+    @apply w-2 h-2 bg-primary-500 rounded-full animate-bounce;
+  }
+  
+  .loading-dots > div:nth-child(2) {
+    @apply animation-delay-200;
+  }
+  
+  .loading-dots > div:nth-child(3) {
+    @apply animation-delay-400;
+  }
+  
+  /* 渐变背景 */
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-50 via-white to-accent-50;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
+  }
+  
+  /* 玻璃态效果 */
+  .glass {
+    @apply bg-white/20 backdrop-blur-md border border-white/30;
+  }
+  
+  .glass-strong {
+    @apply bg-white/30 backdrop-blur-lg border border-white/40;
+  }
+  
+  /* 动画类 - 这些动画已经在 tailwind.config.js 中定义，直接使用即可 */
+  
+  /* 响应式网格 */
+  .grid-responsive {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+  }
+  
+  .grid-books {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6;
+  }
+  
+  /* 自定义滚动条 */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.primary.300') theme('colors.secondary.100');
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-secondary-100 rounded-full;
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-primary-300 rounded-full hover:bg-primary-400;
   }
 }

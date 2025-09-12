@@ -7,7 +7,7 @@ import { getBook, deleteBook } from '@/lib/api'
 import { ArrowLeft, Edit, Trash2, BookOpen, Calendar, Tag, User } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { getImageUrl } from '@/lib/utils'
+import { getImageUrl, getThumbUrl } from '@/lib/utils'
 
 export default function BookDetail() {
   const params = useParams()
@@ -26,6 +26,12 @@ export default function BookDetail() {
     try {
       setLoading(true)
       const bookData = await getBook(Number(params.id))
+      console.log('图书详情数据:', bookData)
+      if (bookData.cover_image) {
+        console.log('封面图片路径:', bookData.cover_image)
+        console.log('缩略图URL:', getThumbUrl(bookData.cover_image))
+        console.log('原图URL:', getImageUrl(bookData.cover_image))
+      }
       setBook(bookData)
     } catch (error) {
       console.error('加载图书详情失败:', error)
@@ -115,16 +121,28 @@ export default function BookDetail() {
               <div className="lg:col-span-1">
                 <div className="aspect-[3/4] bg-gray-100 rounded-lg overflow-hidden">
                   {book.cover_image ? (
-                    <Image
-                      src={getImageUrl(book.cover_image)}
-                      alt={book.title}
-                      width={600}
-                      height={800}
-                      quality={90}
-                      priority
-                      sizes="(max-width: 1024px) 80vw, 400px"
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={getThumbUrl(book.cover_image) || getImageUrl(book.cover_image)}
+                        alt={book.title}
+                        width={600}
+                        height={800}
+                        quality={90}
+                        priority
+                        sizes="(max-width: 1024px) 80vw, 400px"
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          console.error('图片加载失败:', e)
+                          // 如果Next.js Image失败，尝试使用普通img标签
+                          const target = e.target as HTMLImageElement
+                          const fallbackImg = document.createElement('img')
+                          fallbackImg.src = getThumbUrl(book.cover_image) || getImageUrl(book.cover_image)
+                          fallbackImg.alt = book.title
+                          fallbackImg.className = 'w-full h-full object-cover'
+                          target.parentNode?.replaceChild(fallbackImg, target)
+                        }}
+                      />
+                    </div>
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
                       <BookOpen className="h-24 w-24 text-gray-400" />

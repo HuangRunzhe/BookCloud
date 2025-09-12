@@ -3,11 +3,15 @@ const getBackendUrl = () => {
   if (typeof window !== 'undefined') {
     // 客户端环境
     const hostname = window.location.hostname
+    const protocol = window.location.protocol
+    
+    // 如果是本地开发环境
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return 'http://localhost:8000'
-    } else {
-      return `http://${hostname}:8000`
     }
+    
+    // 如果是生产环境，使用相同的协议和主机名
+    return `${protocol}//${hostname}:8000`
   }
   // 服务端环境
   return 'http://localhost:8000'

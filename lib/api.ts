@@ -160,3 +160,41 @@ export const getUserBooksCount = async (userId: number): Promise<{ total: number
   const response = await api.get(`/users/${userId}/books/count/`)
   return response.data
 }
+
+// 支付相关API
+export const createPayment = async (paymentData: { payment_type: string; payment_method: string }): Promise<any> => {
+  const response = await api.post('/payments/', paymentData)
+  return response.data
+}
+
+export const getUserPayments = async (): Promise<any[]> => {
+  const response = await api.get('/payments/')
+  return response.data
+}
+
+// 管理员API
+export const getAllUsers = async (page: number = 1, pageSize: number = 20): Promise<any[]> => {
+  const response = await api.get('/admin/users/', {
+    params: { page, page_size: pageSize }
+  })
+  return response.data
+}
+
+export const updateUserPermissions = async (userId: number, permissions: any): Promise<any> => {
+  const response = await api.put(`/admin/users/${userId}/permissions`, permissions)
+  return response.data
+}
+
+export const getAllPayments = async (page: number = 1, pageSize: number = 20): Promise<any[]> => {
+  const response = await api.get('/admin/payments/', {
+    params: { page, page_size: pageSize }
+  })
+  return response.data
+}
+
+export const updatePaymentStatus = async (paymentId: number, status: string, transactionId?: string): Promise<any> => {
+  const response = await api.put(`/admin/payments/${paymentId}/status`, null, {
+    params: { status, transaction_id: transactionId }
+  })
+  return response.data
+}

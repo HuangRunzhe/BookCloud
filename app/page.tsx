@@ -8,6 +8,7 @@ import StatsPanel from '@/components/StatsPanel'
 import AIChat from '@/components/AIChat'
 import Header from '@/components/Header'
 import Pagination from '@/components/Pagination'
+import PermissionGuard from '@/components/PermissionGuard'
 import { useAuth } from '@/contexts/AuthContext'
 import { getBooks, getBooksCount, getStats } from '@/lib/api'
 
@@ -101,16 +102,17 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header onBookUpdate={handleBookUpdate} />
-      
-      <main className="container mx-auto px-4 py-8">
+    <PermissionGuard>
+      <div className="min-h-screen">
+        <Header onBookUpdate={handleBookUpdate} />
+        
+        <main className="container mx-auto px-4 py-8">
         {/* 搜索和筛选 */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+        <div className="card-elevated p-8 mb-8 animate-fade-in">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                搜索关键词
+              <label className="block text-sm font-semibold text-secondary-700 mb-3">
+                🔍 搜索关键词
               </label>
               <input
                 type="text"
@@ -122,8 +124,8 @@ export default function Home() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                分类
+              <label className="block text-sm font-semibold text-secondary-700 mb-3">
+                📚 分类
               </label>
               <select
                 value={selectedCategory}
@@ -149,8 +151,8 @@ export default function Home() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                阅读状态
+              <label className="block text-sm font-semibold text-secondary-700 mb-3">
+                📖 阅读状态
               </label>
               <select
                 value={selectedStatus}
@@ -166,8 +168,11 @@ export default function Home() {
             <div className="flex items-end">
               <button
                 onClick={handleSearch}
-                className="btn-primary w-full"
+                className="btn-primary w-full text-base py-4"
               >
+                <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
                 搜索
               </button>
             </div>
@@ -177,16 +182,21 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* 主要内容区域 */}
           <div className="lg:col-span-3">
-            <div className="flex justify-between items-center mb-6">
-              <h2 className="text-2xl font-bold text-gray-900">
-                我的藏书 ({totalItems} 本)
-              </h2>
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h2 className="text-3xl font-bold gradient-text mb-2">
+                  📚 我的藏书
+                </h2>
+                <p className="text-secondary-600 text-lg">
+                  共收藏了 <span className="font-semibold text-primary-600">{totalItems}</span> 本图书
+                </p>
+              </div>
             </div>
             
             {loading ? (
-              <div className="text-center py-12">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary-600 mx-auto"></div>
-                <p className="mt-2 text-gray-600">搜索中...</p>
+              <div className="text-center py-16">
+                <div className="loading-spinner w-12 h-12 mx-auto mb-4"></div>
+                <p className="text-secondary-600 text-lg">搜索中...</p>
               </div>
             ) : books.length > 0 ? (
               <>
@@ -200,9 +210,14 @@ export default function Home() {
                 />
               </>
             ) : (
-              <div className="text-center py-12">
-                <p className="text-gray-500 text-lg">没有找到图书</p>
-                <p className="text-gray-400 mt-2">尝试调整搜索条件或添加新图书</p>
+              <div className="text-center py-16">
+                <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-primary-100 to-accent-100 rounded-full flex items-center justify-center">
+                  <svg className="w-12 h-12 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-secondary-700 mb-2">没有找到图书</h3>
+                <p className="text-secondary-500">尝试调整搜索条件或添加新图书</p>
               </div>
             )}
           </div>
@@ -216,7 +231,8 @@ export default function Home() {
             <AIChat onBookUpdate={handleBookUpdate} />
           </div>
         </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </PermissionGuard>
   )
 }

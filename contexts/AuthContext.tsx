@@ -15,6 +15,9 @@ interface User {
   ai_insights?: string
   is_active: boolean
   is_admin: boolean
+  membership_status: string
+  membership_expires_at?: string
+  can_use_system: boolean
   created_at: string
   updated_at?: string
 }
