@@ -77,7 +77,10 @@ export default function StatisticsPage() {
   const loadDetailedStats = async () => {
     try {
       const token = localStorage.getItem('token')
-      const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`
+      const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000' : 
+        window.location.hostname === 'bc.aikits.sbs' ? 'https://bcbk.aikits.sbs' :
+        window.location.hostname === 'bcbk.aikits.sbs' ? 'https://bcbk.aikits.sbs' :
+        `${window.location.protocol}//${window.location.hostname}:8000`
       
       const response = await fetch(`${apiBaseUrl}/stats/`, {
         headers: {
@@ -170,7 +173,10 @@ export default function StatisticsPage() {
     setAiLoading(true)
     try {
       const token = localStorage.getItem('token')
-      const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`
+      const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000' : 
+        window.location.hostname === 'bc.aikits.sbs' ? 'https://bcbk.aikits.sbs' :
+        window.location.hostname === 'bcbk.aikits.sbs' ? 'https://bcbk.aikits.sbs' :
+        `${window.location.protocol}//${window.location.hostname}:8000`
       
       const response = await fetch(`${apiBaseUrl}/chat`, {
         method: 'POST',

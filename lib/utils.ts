@@ -8,6 +8,10 @@ const getBackendUrl = () => {
     // 如果是本地开发环境
     if (hostname === 'localhost' || hostname === '127.0.0.1') {
       return 'http://localhost:8000'
+    } else if (hostname === 'bc.aikits.sbs') {
+      return 'https://bcbk.aikits.sbs'
+    } else if (hostname === 'bcbk.aikits.sbs') {
+      return 'https://bcbk.aikits.sbs'
     }
     
     // 如果是生产环境，使用相同的协议和主机名

@@ -98,7 +98,9 @@ export default function EditBook() {
       const apiBaseUrl = typeof window !== 'undefined' 
         ? (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
            ? 'http://localhost:8000' 
-           : `${window.location.protocol}//${window.location.hostname}:8000`)
+           : window.location.hostname === 'bc.aikits.sbs' ? 'https://bcbk.aikits.sbs' :
+             window.location.hostname === 'bcbk.aikits.sbs' ? 'https://bcbk.aikits.sbs' :
+             `${window.location.protocol}//${window.location.hostname}:8000`)
         : 'http://localhost:8000'
       
       const response = await fetch(`${apiBaseUrl}/generate-description`, {

@@ -47,6 +47,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const protocol = window.location.protocol
       if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://localhost:8000'
+      } else if (hostname === 'bc.aikits.sbs') {
+        return 'https://bcbk.aikits.sbs'
+      } else if (hostname === 'bcbk.aikits.sbs') {
+        return 'https://bcbk.aikits.sbs'
       } else {
         return `${protocol}//${hostname}:8000`
       }
