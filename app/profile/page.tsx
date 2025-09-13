@@ -47,7 +47,7 @@ export default function ProfilePage() {
       console.log('Loading stats with token:', token ? 'present' : 'missing')
       
       // 先尝试直接调用后端API
-      const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000' : `http://${window.location.hostname}:8000`
+      const apiBaseUrl = window.location.hostname === 'localhost' ? 'http://localhost:8000' : `${window.location.protocol}//${window.location.hostname}:8000`
       
       const response = await fetch(`${apiBaseUrl}/stats/`, {
         headers: {

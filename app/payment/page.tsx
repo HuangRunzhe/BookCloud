@@ -45,11 +45,11 @@ export default function PaymentPage() {
       if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://localhost:8000'
       } else if (hostname === 'bc.aikits.sbs') {
-        return 'http://bcbk.aikits.sbs'
+        return 'https://bcbk.aikits.sbs'
       } else if (hostname === 'bcbk.aikits.sbs') {
-        return 'http://bcbk.aikits.sbs'
+        return 'https://bcbk.aikits.sbs'
       } else {
-        return `http://${hostname}:8000`
+        return `https://${hostname}:8000`
       }
     }
     return 'http://localhost:8000'

@@ -44,10 +44,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const getApiBaseUrl = () => {
     if (typeof window !== 'undefined') {
       const hostname = window.location.hostname
+      const protocol = window.location.protocol
       if (hostname === 'localhost' || hostname === '127.0.0.1') {
         return 'http://localhost:8000'
       } else {
-        return `http://${hostname}:8000`
+        return `${protocol}//${hostname}:8000`
       }
     }
     return 'http://localhost:8000'
