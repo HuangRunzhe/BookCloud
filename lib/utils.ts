@@ -1,5 +1,5 @@
 // 动态获取后端URL
-const getBackendUrl = () => {
+export const getBackendUrl = () => {
   if (typeof window !== 'undefined') {
     // 客户端环境
     const hostname = window.location.hostname
