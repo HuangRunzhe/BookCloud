@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/contexts/AuthContext'
 import { ArrowLeft, Save, Upload, User as UserIcon } from 'lucide-react'
 import Link from 'next/link'
+import { getBackendUrl } from '@/lib/utils'
 
 interface UserProfile {
   id: number
@@ -70,7 +71,7 @@ export default function EditProfilePage() {
         location: formData.location || null
       }
 
-      const response = await fetch('/api/auth/profile', {
+      const response = await fetch(`${getBackendUrl()}/auth/profile`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

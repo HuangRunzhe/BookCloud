@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
-import { BookOpen, Search, BarChart3, Bot, Upload, Camera, Users, Star, CheckCircle, ArrowRight, Trophy } from 'lucide-react'
+import { Library, Search, BarChart3, Bot, Upload, Camera, Users, Star, CheckCircle, ArrowRight, Trophy } from 'lucide-react'
 import PublicLeaderboard from '@/components/PublicLeaderboard'
 
 export default function LandingPage() {
@@ -11,7 +11,7 @@ export default function LandingPage() {
 
   const features = [
     {
-      icon: <BookOpen className="w-8 h-8" />,
+      icon: <Library className="w-8 h-8" />,
       title: '智能图书管理',
       description: '轻松添加、编辑、删除图书，支持批量操作和智能分类',
       details: ['手动添加图书', '自动获取图书信息', '智能分类建议', '批量导入导出']
@@ -109,7 +109,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <BookOpen className="w-8 h-8 text-blue-600" />
+              <Library className="w-8 h-8 text-blue-600" />
               <span className="ml-2 text-xl font-bold text-gray-900">书云</span>
             </div>
             <div className="flex items-center space-x-4">
@@ -327,7 +327,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
-              <BookOpen className="w-8 h-8 text-blue-400" />
+              <Library className="w-8 h-8 text-blue-400" />
               <span className="ml-2 text-xl font-bold">书云</span>
             </div>
             <p className="text-gray-400 mb-4">
