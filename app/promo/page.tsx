@@ -168,7 +168,7 @@ export default function PromoPage() {
 
             {/* 统计数据 */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
-              {stats.map((stat, index) => (
+              {stats.map((stat: any, index: number) => (
                 <div key={index} className="text-center p-6 bg-gray-50 rounded-xl">
                   <div className="text-blue-600 mb-3 flex justify-center">
                     {stat.icon}
@@ -423,7 +423,7 @@ export default function PromoPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+            {features.map((feature: any, index: number) => (
               <div key={index} className="p-8 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
                 <div className="text-blue-600 mb-4">
                   {feature.icon}
@@ -448,7 +448,7 @@ export default function PromoPage() {
           <EarlyBirdCampaign locale={locale} getTranslation={getTranslation} />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {pricingPlans.map((plan, index) => (
+            {pricingPlans.map((plan: any, index: number) => (
               <div 
                 key={index}
                 className={`relative p-6 rounded-xl border-2 transition-all duration-300 hover:shadow-lg ${
@@ -471,7 +471,7 @@ export default function PromoPage() {
                   </div>
                   
                   <div className="grid grid-cols-2 gap-2 mb-6 text-left">
-                    {plan.features.map((feature: string, featureIndex: number) => (
+                    {(plan.features as string[]).map((feature: string, featureIndex: number) => (
                       <div key={featureIndex} className="flex items-center text-gray-700">
                         <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                         <span className="text-xs">{feature}</span>
@@ -502,7 +502,7 @@ export default function PromoPage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {achievements.map((achievement, index) => (
+            {achievements.map((achievement: any, index: number) => (
               <div key={index} className="flex items-center p-6 bg-white rounded-xl shadow-sm">
                 <div className="text-blue-600 mr-4">
                   {achievement.icon}

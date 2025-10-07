@@ -18,7 +18,7 @@ export function detectDeviceLanguage(): DeviceLanguage {
   }
   
   const primaryLang = navigator.language || (navigator as any).userLanguage || 'zh'
-  const allLangs = navigator.languages || [primaryLang]
+  const allLangs = Array.from(navigator.languages ?? [primaryLang])
   
   // 检查是否包含中文
   const hasChinese = allLangs.some(lang => 
