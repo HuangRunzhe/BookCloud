@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { AuthProvider } from '@/contexts/AuthContext'
+import { LanguageProvider } from '@/contexts/LanguageContext'
 
 export const metadata: Metadata = {
-  title: '书云 - 智能图书管理系统 | 藏书管理、AI推荐、批量操作',
-  description: '书云是专业的个人图书管理系统，支持藏书管理、AI智能推荐、批量添加、阅读统计等功能。让您的图书收藏管理更简单高效。',
-  keywords: '图书管理,藏书管理,个人图书馆,图书收藏,AI推荐,阅读统计,图书分类,电子书管理,图书数据库',
+  title: '书云 - AI驱动的家庭藏书管理系统 | 智能分析、全平台支持、终身免费',
+  description: '书云是专业的家庭藏书管理平台，融合AI技术提供智能分析、阅读建议和个性化推荐。支持全平台使用，前50名用户终身免费。让您的家庭图书馆管理更智能高效。',
+  keywords: '家庭藏书管理,AI图书分析,智能图书馆,藏书统计,阅读分析,图书推荐,家庭图书馆,AI助手,藏书分类,阅读习惯分析,图书收藏管理,智能推荐系统',
   authors: [{ name: '书云团队' }],
   creator: '书云',
   publisher: '书云',
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: '书云 - 智能图书管理系统',
-    description: '专业的个人图书管理系统，支持藏书管理、AI推荐、批量操作等功能',
+    title: '书云 - AI驱动的家庭藏书管理系统',
+    description: '专业的家庭藏书管理平台，融合AI技术提供智能分析、阅读建议和个性化推荐。前50名用户终身免费。',
     url: 'https://bc.aikits.sbs',
     siteName: '书云',
     images: [
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: '书云 - 智能图书管理系统',
+        alt: '书云 - AI驱动的家庭藏书管理系统',
       },
     ],
     locale: 'zh_CN',
@@ -36,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: '书云 - 智能图书管理系统',
-    description: '专业的个人图书管理系统，支持藏书管理、AI推荐、批量操作等功能',
+    title: '书云 - AI驱动的家庭藏书管理系统',
+    description: '专业的家庭藏书管理平台，融合AI技术提供智能分析、阅读建议和个性化推荐。前50名用户终身免费。',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -64,11 +65,13 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="font-sans">
-        <AuthProvider>
-          <div className="min-h-screen bg-gray-50">
-            {children}
-          </div>
-        </AuthProvider>
+        <LanguageProvider>
+          <AuthProvider>
+            <div className="min-h-screen bg-gray-50">
+              {children}
+            </div>
+          </AuthProvider>
+        </LanguageProvider>
       </body>
     </html>
   )

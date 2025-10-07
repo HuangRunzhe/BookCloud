@@ -1,0 +1,247 @@
+{
+  "common": {
+    "loading": "Loading...",
+    "error": "Error occurred",
+    "success": "Success",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "view": "View",
+    "add": "Add",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "open": "Open",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "navigation": {
+    "home": "Home",
+    "books": "Books",
+    "statistics": "Statistics",
+    "profile": "Profile",
+    "settings": "Settings",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout"
+  },
+  "promo": {
+    "title": "BookCloud",
+    "subtitle": "AI-Powered Home Library Management System",
+    "description": "Professional home library management platform powered by AI technology, providing intelligent analysis, reading recommendations, and personalized suggestions for smarter family library management",
+    "tryNow": "Try Now",
+    "watchDemo": "Watch Demo",
+    "stats": {
+      "users": "Registered Users",
+      "books": "Managed Books",
+      "stability": "System Stability",
+      "service": "Online Service"
+    },
+    "aiAssistant": {
+      "title": "AI Smart Assistant",
+      "description": "Discuss your collection with AI and get professional advice",
+      "messages": {
+        "ai1": "Hello! I see you have many technical books in your collection. I suggest organizing them by programming language for easier searching.",
+        "user1": "Good idea! How should I categorize my literature books?",
+        "ai2": "Literature can be categorized by genre: novels, essays, poetry, or by author nationality. I notice you have 'One Hundred Years of Solitude', I suggest categorizing it as Latin American literature.",
+        "user2": "Excellent! Can you help me generate a category tag?",
+        "ai3": "Of course! I've generated a 'Latin American Literature' tag for you and automatically applied it to related books. You can also create more custom tags."
+      }
+    },
+    "bookManagement": {
+      "title": "Book Management Interface",
+      "description": "Intuitive and easy-to-use book management experience",
+      "myBooks": "My Collection",
+      "searchPlaceholder": "Search books...",
+      "categories": {
+        "all": "All",
+        "tech": "Technology",
+        "literature": "Literature",
+        "management": "Management"
+      },
+      "bookCount": "books",
+      "bookStatus": {
+        "read": "Read",
+        "reading": "Reading",
+        "unread": "Unread"
+      }
+    },
+    "features": {
+      "title": "Core Features",
+      "description": "AI-powered solution designed specifically for home library management",
+      "items": {
+        "database": {
+          "title": "AI Smart Analysis",
+          "description": "Deep learning-based collection structure analysis, automatically identifying reading preferences and collection trends"
+        },
+        "analysis": {
+          "title": "Reading Habit Insights",
+          "description": "Deep analysis of family members' reading patterns, providing personalized reading recommendations and growth paths"
+        },
+        "search": {
+          "title": "Smart Recommendation Engine",
+          "description": "AI-driven book recommendation system that suggests quality books based on family reading history"
+        },
+        "reports": {
+          "title": "Family Reading Reports",
+          "description": "Generate detailed family reading analysis reports, tracking reading growth trajectories"
+        }
+      }
+    },
+    "pricing": {
+      "title": "Choose Plan",
+      "description": "First 50 users get lifetime free access to AI-powered home library management",
+      "earlyBird": {
+        "title": "🎉 Limited Time Offer",
+        "description": "First 50 registered users",
+        "benefit": "Lifetime free access to all features",
+        "remaining": "Spots remaining",
+        "urgent": "Register now, don't miss out!"
+      },
+      "plans": {
+        "free": {
+          "name": "Free",
+          "price": "$0",
+          "period": "Forever Free",
+          "features": ["Up to 40 books", "Basic search", "Simple statistics"]
+        },
+        "monthly": {
+          "name": "Monthly",
+          "price": "$1.99",
+          "period": "per month",
+          "features": ["Unlimited book management", "AI smart analysis", "Smart recommendations", "Detailed reports", "Data export"],
+          "popular": "Recommended"
+        },
+        "yearly": {
+          "name": "Yearly",
+          "price": "$19.99",
+          "period": "per year",
+          "features": ["All monthly features", "Priority support", "Exclusive features", "Lifetime updates"]
+        }
+      },
+      "selectPlan": "Select Plan"
+    },
+    "achievements": {
+      "title": "Product Features",
+      "description": "Innovative platform designed for home library management",
+      "items": {
+        "ai": "AI-powered innovative book management",
+        "ui": "Simple and intuitive interface design",
+        "focus": "Focused on home library management",
+        "optimization": "Continuous user experience optimization"
+      }
+    },
+    "insights": {
+      "title": "Data Insights",
+      "description": "Collection management analysis based on real data",
+      "distribution": "Collection Distribution",
+      "readingStats": "Reading Statistics",
+      "collectionTrends": "Collection Trends",
+      "categories": {
+        "tech": "Technology",
+        "literature": "Literature",
+        "management": "Management"
+      },
+      "stats": {
+        "newThisMonth": "New This Month",
+        "weeklyAverage": "Weekly Average",
+        "collectedThisMonth": "Collected This Month",
+        "mostPopular": "Most Popular",
+        "averageRating": "Average Rating"
+      }
+    },
+    "cta": {
+      "title": "Start Your Smart Home Library Management Journey",
+      "description": "Join thousands of users and experience professional-grade collection management",
+      "startNow": "Start Now",
+      "freeTrial": "Free trial, no credit card required"
+    }
+  },
+  "landing": {
+    "nav": {
+      "login": "Login",
+      "register": "Free Register"
+    },
+    "hero": {
+      "title": "AI-Powered Home Library Management System",
+      "description": "Professional home library management platform designed for families, integrating AI technology to provide deep analysis, personalized recommendations, and reading growth tracking for smarter family library management",
+      "startNow": "Get Started",
+      "learnMore": "Learn More",
+      "earlyBird": "First 50 users get lifetime free access"
+    },
+    "stats": {
+      "earlyUsers": "Early Users",
+      "booksManaged": "Books Managed",
+      "stability": "System Stability",
+      "service": "Online Service"
+    },
+    "features": {
+      "title": "AI-Powered Home Library Management",
+      "subtitle": "Intelligent collection analysis and management platform designed specifically for families",
+      "items": {
+        "management": {
+          "title": "AI Smart Analysis",
+          "description": "Deep learning-based collection structure analysis, automatically identifying family reading preferences and collection trends",
+          "details": ["AI collection analysis", "Reading preference identification", "Smart categorization suggestions", "Family reading pattern analysis"]
+        },
+        "search": {
+          "title": "Smart Recommendation Engine",
+          "description": "AI-driven personalized book recommendations based on family reading history",
+          "details": ["Personalized recommendations", "Reading path planning", "Smart search", "Similar book discovery"]
+        },
+        "analytics": {
+          "title": "Family Reading Reports",
+          "description": "Generate detailed family reading analysis reports, tracking each member's reading growth trajectory",
+          "details": ["Reading growth reports", "Family reading statistics", "Reading habit analysis", "Knowledge graph construction"]
+        },
+        "ai": {
+          "title": "AI Reading Assistant",
+          "description": "Advanced AI-powered intelligent reading assistant providing personalized reading advice and knowledge Q&A",
+          "details": ["Smart reading suggestions", "Knowledge Q&A", "Reading plan creation", "Learning path recommendations"]
+        }
+      }
+    },
+    "testimonials": {
+      "title": "User Reviews",
+      "subtitle": "See how other users are using BookCloud",
+      "items": [
+        {
+          "name": "Mr. Zhang",
+          "role": "Book Lover",
+          "content": "BookCloud makes my book collection management so simple, the AI recommendation feature helped me discover many great books!"
+        },
+        {
+          "name": "Ms. Li",
+          "role": "Librarian",
+          "content": "The batch addition feature greatly improved my work efficiency, highly recommended!"
+        },
+        {
+          "name": "Mr. Wang",
+          "role": "Educator",
+          "content": "The data statistics feature helps me clearly understand my reading habits, very practical."
+        }
+      ]
+    },
+    "leaderboard": {
+      "title": "Book Collection Leaderboard",
+      "subtitle": "See which users have the most book collections, click on user names to view their public books"
+    },
+    "cta": {
+      "title": "Start Managing Your Book Collection",
+      "description": "Register now and experience the powerful features of the smart book management system",
+      "register": "Free Register",
+      "login": "Login Now"
+    },
+    "footer": {
+      "description": "Professional smart book management system that makes your book collection management simpler and more efficient.",
+      "github": "GitHub Open Source",
+      "copyright": "© 2024 BookCloud. All rights reserved."
+    }
+  }
+}

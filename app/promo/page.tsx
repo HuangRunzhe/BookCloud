@@ -22,77 +22,116 @@ import {
   Smartphone,
   Search
 } from 'lucide-react'
+import LanguageSwitcher from '@/components/LanguageSwitcher'
+import EarlyBirdCampaign from '@/components/EarlyBirdCampaign'
+import { detectUserLanguage } from '@/lib/geoDetection'
 
 export default function PromoPage() {
   const [isVisible, setIsVisible] = useState(false)
+  const [locale, setLocale] = useState<'zh' | 'en'>('zh')
 
   useEffect(() => {
     setIsVisible(true)
+    
+    // 自动检测用户语言偏好
+    const detectedLang = detectUserLanguage()
+    setLocale(detectedLang)
   }, [])
 
+  // 调试信息
+  console.log('Current locale:', locale)
+
+  // 翻译函数
+  const getTranslation = (key: string) => {
+    try {
+      const keys = key.split('.')
+      let value: any
+      
+      // 动态导入翻译文件
+      if (locale === 'zh') {
+        value = require('@/messages/zh.json')
+      } else {
+        value = require('@/messages/en.json')
+      }
+      
+      for (const k of keys) {
+        value = value?.[k]
+      }
+      return value || key
+    } catch (error) {
+      console.error('Translation error:', error)
+      return key
+    }
+  }
+
   const stats = [
-    { number: "50+", label: "注册用户", icon: <Users className="w-6 h-6" /> },
-    { number: "2,000+", label: "管理书籍", icon: <BookOpen className="w-6 h-6" /> },
-    { number: "99.9%", label: "系统稳定性", icon: <Shield className="w-6 h-6" /> },
-    { number: "24/7", label: "在线服务", icon: <Clock className="w-6 h-6" /> }
+    { number: "50+", label: getTranslation('promo.stats.users'), icon: <Users className="w-6 h-6" /> },
+    { number: "2,000+", label: getTranslation('promo.stats.books'), icon: <BookOpen className="w-6 h-6" /> },
+    { number: "99.9%", label: getTranslation('promo.stats.stability'), icon: <Shield className="w-6 h-6" /> },
+    { number: "24/7", label: getTranslation('promo.stats.service'), icon: <Clock className="w-6 h-6" /> }
   ]
 
   const features = [
     {
       icon: <Database className="w-8 h-8" />,
-      title: "智能数据库",
-      description: "基于AI的书籍信息自动完善与分类管理"
+      title: getTranslation('promo.features.items.database.title'),
+      description: getTranslation('promo.features.items.database.description')
     },
     {
       icon: <TrendingUp className="w-8 h-8" />,
-      title: "收藏分析",
-      description: "深度分析您的藏书结构，提供收藏建议"
+      title: getTranslation('promo.features.items.analysis.title'),
+      description: getTranslation('promo.features.items.analysis.description')
     },
     {
       icon: <Zap className="w-8 h-8" />,
-      title: "快速搜索",
-      description: "毫秒级响应，支持多维度智能检索"
+      title: getTranslation('promo.features.items.search.title'),
+      description: getTranslation('promo.features.items.search.description')
     },
     {
       icon: <BarChart3 className="w-8 h-8" />,
-      title: "统计报告",
-      description: "详细的藏书数据统计与可视化报告"
+      title: getTranslation('promo.features.items.reports.title'),
+      description: getTranslation('promo.features.items.reports.description')
     }
   ]
 
   const pricingPlans = [
     {
-      name: "免费版",
-      price: "¥0",
-      period: "永久免费",
-      features: ["最多40本书籍", "基础搜索功能", "简单统计"],
+      name: getTranslation('promo.pricing.plans.free.name'),
+      price: locale === 'zh' ? "¥0" : "$0",
+      period: getTranslation('promo.pricing.plans.free.period'),
+      features: getTranslation('promo.pricing.plans.free.features'),
       popular: false
     },
     {
-      name: "月费版",
-      price: "¥12.9",
-      period: "每月",
-      features: ["无限制书籍管理", "AI智能分类", "高级搜索", "详细统计", "数据导出"],
+      name: getTranslation('promo.pricing.plans.monthly.name'),
+      price: locale === 'zh' ? "¥12.9" : "$1.99",
+      period: getTranslation('promo.pricing.plans.monthly.period'),
+      features: getTranslation('promo.pricing.plans.monthly.features'),
       popular: true
     },
     {
-      name: "年费版",
-      price: "¥129",
-      period: "每年",
-      features: ["所有月费版功能", "优先客服支持", "专属功能", "终身更新"],
+      name: getTranslation('promo.pricing.plans.yearly.name'),
+      price: locale === 'zh' ? "¥129" : "$19.99",
+      period: getTranslation('promo.pricing.plans.yearly.period'),
+      features: getTranslation('promo.pricing.plans.yearly.features'),
       popular: false
     }
   ]
 
   const achievements = [
-    { icon: <Award className="w-5 h-5" />, text: "基于AI技术的创新图书管理" },
-    { icon: <Star className="w-5 h-5" />, text: "简洁易用的界面设计" },
-    { icon: <Target className="w-5 h-5" />, text: "专注家庭图书馆管理" },
-    { icon: <Activity className="w-5 h-5" />, text: "持续优化用户体验" }
+    { icon: <Award className="w-5 h-5" />, text: getTranslation('promo.achievements.items.ai') },
+    { icon: <Star className="w-5 h-5" />, text: getTranslation('promo.achievements.items.ui') },
+    { icon: <Target className="w-5 h-5" />, text: getTranslation('promo.achievements.items.focus') },
+    { icon: <Activity className="w-5 h-5" />, text: getTranslation('promo.achievements.items.optimization') }
   ]
 
   return (
     <div className="min-h-screen bg-white text-gray-900" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+      {/* Language Switcher */}
+      <div className="fixed top-4 right-4 z-50">
+        <LanguageSwitcher />
+      </div>
+      
       {/* Hero Section */}
       <section className="pt-16 pb-20 px-6">
         <div className="max-w-6xl mx-auto">
@@ -104,25 +143,25 @@ export default function PromoPage() {
                   <Library className="w-8 h-8 text-white" />
                 </div>
                 <h1 className="text-5xl font-bold text-gray-900">
-                  书云
+                  {getTranslation('promo.title')}
                 </h1>
               </div>
               
               <h2 className="text-3xl md:text-4xl font-light mb-6 text-gray-700">
-                智能家庭图书馆管理系统
+                {getTranslation('promo.subtitle')}
               </h2>
               
               <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed">
-                基于AI技术的现代化家庭图书管理平台，让您的实体书籍收藏井然有序
+                {getTranslation('promo.description')}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <button className="px-8 py-4 bg-blue-600 rounded-lg text-white font-semibold text-lg hover:bg-blue-700 transition-all duration-300 shadow-lg">
-                  立即体验
+                  {getTranslation('promo.tryNow')}
                   <ArrowRight className="w-5 h-5 ml-2 inline" />
                 </button>
                 <button className="px-8 py-4 border-2 border-gray-300 rounded-lg text-gray-700 font-semibold text-lg hover:bg-gray-50 transition-all duration-300">
-                  观看演示
+                  {getTranslation('promo.watchDemo')}
                 </button>
               </div>
             </div>
@@ -147,8 +186,8 @@ export default function PromoPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">AI智能助手</h3>
-            <p className="text-gray-600 text-lg">与AI探讨您的藏书，获得专业建议</p>
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">{getTranslation('promo.aiAssistant.title')}</h3>
+            <p className="text-gray-600 text-lg">{getTranslation('promo.aiAssistant.description')}</p>
           </div>
 
           <div className="flex justify-center mb-12">
@@ -183,14 +222,14 @@ export default function PromoPage() {
                             <MessageCircle className="w-4 h-4 text-white" />
                           </div>
                           <div className="bg-white rounded-2xl rounded-tl-md p-4 max-w-xs shadow-sm">
-                            <p className="text-sm text-gray-800">您好！我看到您的藏书中有很多技术类书籍，建议您可以按编程语言分类整理，这样查找会更方便。</p>
+                            <p className="text-sm text-gray-800">{getTranslation('promo.aiAssistant.messages.ai1')}</p>
                           </div>
                         </div>
 
                         {/* 用户消息 */}
                         <div className="flex items-start space-x-3 justify-end">
                           <div className="bg-blue-600 rounded-2xl rounded-tr-md p-4 max-w-xs">
-                            <p className="text-sm text-white">好的，那我的文学类书籍应该怎么分类呢？</p>
+                            <p className="text-sm text-white">{getTranslation('promo.aiAssistant.messages.user1')}</p>
                           </div>
                           <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
                             <Users className="w-4 h-4 text-gray-600" />
@@ -203,14 +242,14 @@ export default function PromoPage() {
                             <MessageCircle className="w-4 h-4 text-white" />
                           </div>
                           <div className="bg-white rounded-2xl rounded-tl-md p-4 max-w-xs shadow-sm">
-                            <p className="text-sm text-gray-800">文学类可以按体裁分类：小说、散文、诗歌，或者按作者国籍分类。我注意到您有《百年孤独》，建议按拉美文学归类。</p>
+                            <p className="text-sm text-gray-800">{getTranslation('promo.aiAssistant.messages.ai2')}</p>
                           </div>
                         </div>
 
                         {/* 用户消息 */}
                         <div className="flex items-start space-x-3 justify-end">
                           <div className="bg-blue-600 rounded-2xl rounded-tr-md p-4 max-w-xs">
-                            <p className="text-sm text-white">太棒了！能帮我生成一个分类标签吗？</p>
+                            <p className="text-sm text-white">{getTranslation('promo.aiAssistant.messages.user2')}</p>
                           </div>
                           <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
                             <Users className="w-4 h-4 text-gray-600" />
@@ -223,7 +262,7 @@ export default function PromoPage() {
                             <MessageCircle className="w-4 h-4 text-white" />
                           </div>
                           <div className="bg-white rounded-2xl rounded-tl-md p-4 max-w-xs shadow-sm">
-                            <p className="text-sm text-gray-800">当然！我为您生成了"拉美文学"标签，已自动应用到相关书籍。您还可以创建更多自定义标签。</p>
+                            <p className="text-sm text-gray-800">{getTranslation('promo.aiAssistant.messages.ai3')}</p>
                           </div>
                         </div>
                       </div>
@@ -240,8 +279,8 @@ export default function PromoPage() {
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">书籍管理界面</h3>
-            <p className="text-gray-600 text-lg">直观易用的图书管理体验</p>
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">{getTranslation('promo.bookManagement.title')}</h3>
+            <p className="text-gray-600 text-lg">{getTranslation('promo.bookManagement.description')}</p>
           </div>
 
           <div className="flex justify-center mb-12">
@@ -272,12 +311,12 @@ export default function PromoPage() {
                       {/* 顶部导航 */}
                       <div className="bg-white px-4 py-3 border-b border-gray-200">
                         <div className="flex items-center justify-between">
-                          <h1 className="text-lg font-semibold text-gray-900">我的藏书</h1>
+                          <h1 className="text-lg font-semibold text-gray-900">{getTranslation('promo.bookManagement.myBooks')}</h1>
                           <div className="flex items-center space-x-2">
                             <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                               <Library className="w-4 h-4 text-white" />
                             </div>
-                            <span className="text-sm text-gray-600">127本</span>
+                            <span className="text-sm text-gray-600">127{getTranslation('promo.bookManagement.bookCount')}</span>
                           </div>
                         </div>
                       </div>
@@ -288,7 +327,7 @@ export default function PromoPage() {
                           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
                           <input 
                             type="text" 
-                            placeholder="搜索书籍..." 
+                            placeholder={getTranslation('promo.bookManagement.searchPlaceholder')} 
                             className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                           />
                         </div>
@@ -297,10 +336,10 @@ export default function PromoPage() {
                       {/* 分类标签 */}
                       <div className="px-4 pb-3 bg-white">
                         <div className="flex space-x-2 overflow-x-auto">
-                          <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium whitespace-nowrap">全部</span>
-                          <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap">技术类</span>
-                          <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap">文学类</span>
-                          <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap">管理类</span>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium whitespace-nowrap">{getTranslation('promo.bookManagement.categories.all')}</span>
+                          <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap">{getTranslation('promo.bookManagement.categories.tech')}</span>
+                          <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap">{getTranslation('promo.bookManagement.categories.literature')}</span>
+                          <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium whitespace-nowrap">{getTranslation('promo.bookManagement.categories.management')}</span>
                         </div>
                       </div>
 
@@ -316,7 +355,7 @@ export default function PromoPage() {
                               <h3 className="font-medium text-gray-900 text-sm truncate">JavaScript高级程序设计</h3>
                               <p className="text-xs text-gray-500 mt-1">Nicholas C. Zakas</p>
                               <div className="flex items-center mt-2 space-x-2">
-                                <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded">技术类</span>
+                                <span className="px-2 py-0.5 bg-blue-100 text-blue-600 text-xs rounded">{getTranslation('promo.bookManagement.categories.tech')}</span>
                                 <span className="text-xs text-gray-400">2024-01-15</span>
                               </div>
                             </div>
@@ -336,7 +375,7 @@ export default function PromoPage() {
                               <h3 className="font-medium text-gray-900 text-sm truncate">百年孤独</h3>
                               <p className="text-xs text-gray-500 mt-1">加西亚·马尔克斯</p>
                               <div className="flex items-center mt-2 space-x-2">
-                                <span className="px-2 py-0.5 bg-green-100 text-green-600 text-xs rounded">文学类</span>
+                                <span className="px-2 py-0.5 bg-green-100 text-green-600 text-xs rounded">{getTranslation('promo.bookManagement.categories.literature')}</span>
                                 <span className="text-xs text-gray-400">2024-01-10</span>
                               </div>
                             </div>
@@ -356,7 +395,7 @@ export default function PromoPage() {
                               <h3 className="font-medium text-gray-900 text-sm truncate">从0到1</h3>
                               <p className="text-xs text-gray-500 mt-1">彼得·蒂尔</p>
                               <div className="flex items-center mt-2 space-x-2">
-                                <span className="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded">管理类</span>
+                                <span className="px-2 py-0.5 bg-purple-100 text-purple-600 text-xs rounded">{getTranslation('promo.bookManagement.categories.management')}</span>
                                 <span className="text-xs text-gray-400">2024-01-08</span>
                               </div>
                             </div>
@@ -379,8 +418,8 @@ export default function PromoPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">核心功能</h3>
-            <p className="text-gray-600 text-lg">专业级家庭图书馆管理解决方案</p>
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">{getTranslation('promo.features.title')}</h3>
+            <p className="text-gray-600 text-lg">{getTranslation('promo.features.description')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -401,9 +440,12 @@ export default function PromoPage() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">选择方案</h3>
-            <p className="text-gray-600 text-lg">灵活定价，满足不同需求</p>
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">{getTranslation('promo.pricing.title')}</h3>
+            <p className="text-gray-600 text-lg">{getTranslation('promo.pricing.description')}</p>
           </div>
+
+          {/* 早期用户活动 */}
+          <EarlyBirdCampaign locale={locale} getTranslation={getTranslation} />
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {pricingPlans.map((plan, index) => (
@@ -416,7 +458,7 @@ export default function PromoPage() {
                 {plan.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                     <div className="bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
-                      推荐
+                      {getTranslation('promo.pricing.plans.monthly.popular')}
                     </div>
                   </div>
                 )}
@@ -429,7 +471,7 @@ export default function PromoPage() {
                   </div>
                   
                   <div className="grid grid-cols-2 gap-2 mb-6 text-left">
-                    {plan.features.map((feature, featureIndex) => (
+                    {plan.features.map((feature: string, featureIndex: number) => (
                       <div key={featureIndex} className="flex items-center text-gray-700">
                         <CheckCircle className="w-3 h-3 text-green-500 mr-2 flex-shrink-0" />
                         <span className="text-xs">{feature}</span>
@@ -442,7 +484,7 @@ export default function PromoPage() {
                       ? 'bg-blue-600 text-white hover:bg-blue-700' 
                       : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
                   }`}>
-                    选择方案
+                    {getTranslation('promo.pricing.selectPlan')}
                   </button>
                 </div>
               </div>
@@ -455,8 +497,8 @@ export default function PromoPage() {
       <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">产品特色</h3>
-            <p className="text-gray-600 text-lg">专为家庭图书管理设计的创新平台</p>
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">{getTranslation('promo.achievements.title')}</h3>
+            <p className="text-gray-600 text-lg">{getTranslation('promo.achievements.description')}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -476,8 +518,8 @@ export default function PromoPage() {
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h3 className="text-3xl font-bold mb-4 text-gray-900">数据洞察</h3>
-            <p className="text-gray-600 text-lg">基于真实数据的藏书管理分析</p>
+            <h3 className="text-3xl font-bold mb-4 text-gray-900">{getTranslation('promo.insights.title')}</h3>
+            <p className="text-gray-600 text-lg">{getTranslation('promo.insights.description')}</p>
           </div>
 
           <div className="flex justify-center">
@@ -510,25 +552,25 @@ export default function PromoPage() {
                         <div className="bg-white rounded-xl p-4 shadow-sm">
                           <div className="flex items-center mb-3">
                             <PieChart className="w-5 h-5 text-blue-600 mr-2" />
-                            <h4 className="font-semibold text-gray-900">藏书分布</h4>
+                            <h4 className="font-semibold text-gray-900">{getTranslation('promo.insights.distribution')}</h4>
                           </div>
                           <div className="space-y-2">
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">技术类</span>
+                              <span className="text-sm text-gray-600">{getTranslation('promo.insights.categories.tech')}</span>
                               <span className="text-sm font-semibold">35%</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1.5">
                               <div className="bg-blue-600 h-1.5 rounded-full" style={{width: '35%'}}></div>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">文学类</span>
+                              <span className="text-sm text-gray-600">{getTranslation('promo.insights.categories.literature')}</span>
                               <span className="text-sm font-semibold">28%</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1.5">
                               <div className="bg-green-600 h-1.5 rounded-full" style={{width: '28%'}}></div>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">管理类</span>
+                              <span className="text-sm text-gray-600">{getTranslation('promo.insights.categories.management')}</span>
                               <span className="text-sm font-semibold">22%</span>
                             </div>
                             <div className="w-full bg-gray-200 rounded-full h-1.5">
@@ -541,16 +583,16 @@ export default function PromoPage() {
                         <div className="bg-white rounded-xl p-4 shadow-sm">
                           <div className="flex items-center mb-3">
                             <TrendingUp className="w-5 h-5 text-green-600 mr-2" />
-                            <h4 className="font-semibold text-gray-900">阅读统计</h4>
+                            <h4 className="font-semibold text-gray-900">{getTranslation('promo.insights.readingStats')}</h4>
                           </div>
                           <div className="grid grid-cols-2 gap-4">
                             <div className="text-center">
                               <div className="text-2xl font-bold text-green-600 mb-1">127</div>
-                              <div className="text-xs text-gray-600">本月新增</div>
+                              <div className="text-xs text-gray-600">{getTranslation('promo.insights.stats.newThisMonth')}</div>
                             </div>
                             <div className="text-center">
                               <div className="text-2xl font-bold text-blue-600 mb-1">4.2</div>
-                              <div className="text-xs text-gray-600">周均阅读</div>
+                              <div className="text-xs text-gray-600">{getTranslation('promo.insights.stats.weeklyAverage')}</div>
                             </div>
                           </div>
                         </div>
@@ -559,19 +601,19 @@ export default function PromoPage() {
                         <div className="bg-white rounded-xl p-4 shadow-sm">
                           <div className="flex items-center mb-3">
                             <Activity className="w-5 h-5 text-purple-600 mr-2" />
-                            <h4 className="font-semibold text-gray-900">收藏趋势</h4>
+                            <h4 className="font-semibold text-gray-900">{getTranslation('promo.insights.collectionTrends')}</h4>
                           </div>
                           <div className="space-y-3">
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">本月收藏</span>
+                              <span className="text-sm text-gray-600">{getTranslation('promo.insights.stats.collectedThisMonth')}</span>
                               <span className="text-sm font-semibold text-purple-600">+15本</span>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">最受欢迎</span>
-                              <span className="text-sm font-semibold text-gray-900">技术类</span>
+                              <span className="text-sm text-gray-600">{getTranslation('promo.insights.stats.mostPopular')}</span>
+                              <span className="text-sm font-semibold text-gray-900">{getTranslation('promo.insights.categories.tech')}</span>
                             </div>
                             <div className="flex justify-between items-center">
-                              <span className="text-sm text-gray-600">平均评分</span>
+                              <span className="text-sm text-gray-600">{getTranslation('promo.insights.stats.averageRating')}</span>
                               <span className="text-sm font-semibold text-yellow-600">4.8★</span>
                             </div>
                           </div>
@@ -589,17 +631,17 @@ export default function PromoPage() {
       {/* CTA Section */}
       <section className="py-20 px-6 bg-blue-600">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <h3 className="text-4xl font-bold mb-6">开始您的智能家庭图书馆管理之旅</h3>
-          <p className="text-xl text-blue-100 mb-12">加入数万用户的选择，体验专业级藏书管理</p>
+          <h3 className="text-4xl font-bold mb-6">{getTranslation('promo.cta.title')}</h3>
+          <p className="text-xl text-blue-100 mb-12">{getTranslation('promo.cta.description')}</p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <button className="px-12 py-4 bg-white text-blue-600 rounded-lg font-semibold text-xl hover:bg-gray-100 transition-all duration-300 shadow-lg">
-              立即开始
+              {getTranslation('promo.cta.startNow')}
               <ArrowRight className="w-6 h-6 ml-2 inline" />
             </button>
             <div className="text-blue-200 text-sm">
               <Star className="w-4 h-4 inline mr-1" />
-              免费试用，无需信用卡
+              {getTranslation('promo.cta.freeTrial')}
             </div>
           </div>
         </div>

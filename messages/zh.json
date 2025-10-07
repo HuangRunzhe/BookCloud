@@ -1,0 +1,247 @@
+{
+  "common": {
+    "loading": "加载中...",
+    "error": "出错了",
+    "success": "成功",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "edit": "编辑",
+    "delete": "删除",
+    "search": "搜索",
+    "filter": "筛选",
+    "sort": "排序",
+    "view": "查看",
+    "add": "添加",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "close": "关闭",
+    "open": "打开",
+    "yes": "是",
+    "no": "否"
+  },
+  "navigation": {
+    "home": "首页",
+    "books": "书籍管理",
+    "statistics": "统计",
+    "profile": "个人资料",
+    "settings": "设置",
+    "login": "登录",
+    "register": "注册",
+    "logout": "退出登录"
+  },
+  "promo": {
+    "title": "书云",
+    "subtitle": "AI驱动的家庭藏书管理系统",
+    "description": "融合人工智能技术的专业家庭藏书管理平台，提供智能分析、阅读建议和个性化推荐，让您的家庭图书馆管理更智能高效",
+    "tryNow": "立即体验",
+    "watchDemo": "观看演示",
+    "stats": {
+      "users": "注册用户",
+      "books": "管理书籍",
+      "stability": "系统稳定性",
+      "service": "在线服务"
+    },
+    "aiAssistant": {
+      "title": "AI智能助手",
+      "description": "与AI探讨您的藏书，获得专业建议",
+      "messages": {
+        "ai1": "您好！我看到您的藏书中有很多技术类书籍，建议您可以按编程语言分类整理，这样查找会更方便。",
+        "user1": "好的，那我的文学类书籍应该怎么分类呢？",
+        "ai2": "文学类可以按体裁分类：小说、散文、诗歌，或者按作者国籍分类。我注意到您有《百年孤独》，建议按拉美文学归类。",
+        "user2": "太棒了！能帮我生成一个分类标签吗？",
+        "ai3": "当然！我为您生成了\"拉美文学\"标签，已自动应用到相关书籍。您还可以创建更多自定义标签。"
+      }
+    },
+    "bookManagement": {
+      "title": "书籍管理界面",
+      "description": "直观易用的图书管理体验",
+      "myBooks": "我的藏书",
+      "searchPlaceholder": "搜索书籍...",
+      "categories": {
+        "all": "全部",
+        "tech": "技术类",
+        "literature": "文学类",
+        "management": "管理类"
+      },
+      "bookCount": "本",
+      "bookStatus": {
+        "read": "已读",
+        "reading": "在读",
+        "unread": "未读"
+      }
+    },
+    "features": {
+      "title": "核心功能",
+      "description": "专为家庭藏书管理设计的AI智能解决方案",
+      "items": {
+        "database": {
+          "title": "AI智能分析",
+          "description": "基于深度学习的藏书结构分析，自动识别阅读偏好和收藏趋势"
+        },
+        "analysis": {
+          "title": "阅读习惯洞察",
+          "description": "深度分析家庭成员的阅读模式，提供个性化阅读建议和成长路径"
+        },
+        "search": {
+          "title": "智能推荐引擎",
+          "description": "AI驱动的图书推荐系统，根据家庭阅读历史推荐优质书籍"
+        },
+        "reports": {
+          "title": "家庭阅读报告",
+          "description": "生成详细的家庭阅读分析报告，追踪阅读成长轨迹"
+        }
+      }
+    },
+    "pricing": {
+      "title": "选择方案",
+      "description": "前50名用户终身免费，立即注册享受AI驱动的家庭藏书管理",
+      "earlyBird": {
+        "title": "🎉 限时活动",
+        "description": "前50名注册用户",
+        "benefit": "终身免费使用所有功能",
+        "remaining": "剩余名额",
+        "urgent": "立即注册，错过再等一年！"
+      },
+      "plans": {
+        "free": {
+          "name": "免费版",
+          "price": "¥0",
+          "period": "永久免费",
+          "features": ["最多40本书籍", "基础搜索功能", "简单统计"]
+        },
+        "monthly": {
+          "name": "月费版",
+          "price": "¥12.9",
+          "period": "每月",
+          "features": ["无限制书籍管理", "AI智能分析", "智能推荐", "详细报告", "数据导出"],
+          "popular": "推荐"
+        },
+        "yearly": {
+          "name": "年费版",
+          "price": "¥129",
+          "period": "每年",
+          "features": ["所有月费版功能", "优先客服支持", "专属功能", "终身更新"]
+        }
+      },
+      "selectPlan": "选择方案"
+    },
+    "achievements": {
+      "title": "产品特色",
+      "description": "专为家庭图书管理设计的创新平台",
+      "items": {
+        "ai": "基于AI技术的创新图书管理",
+        "ui": "简洁易用的界面设计",
+        "focus": "专注家庭图书馆管理",
+        "optimization": "持续优化用户体验"
+      }
+    },
+    "insights": {
+      "title": "数据洞察",
+      "description": "基于真实数据的藏书管理分析",
+      "distribution": "藏书分布",
+      "readingStats": "阅读统计",
+      "collectionTrends": "收藏趋势",
+      "categories": {
+        "tech": "技术类",
+        "literature": "文学类",
+        "management": "管理类"
+      },
+      "stats": {
+        "newThisMonth": "本月新增",
+        "weeklyAverage": "周均阅读",
+        "collectedThisMonth": "本月收藏",
+        "mostPopular": "最受欢迎",
+        "averageRating": "平均评分"
+      }
+    },
+    "cta": {
+      "title": "开始您的智能家庭图书馆管理之旅",
+      "description": "加入数万用户的选择，体验专业级藏书管理",
+      "startNow": "立即开始",
+      "freeTrial": "免费试用，无需信用卡"
+    }
+  },
+  "landing": {
+    "nav": {
+      "login": "登录",
+      "register": "免费注册"
+    },
+    "hero": {
+      "title": "AI驱动的家庭藏书管理系统",
+      "description": "专为家庭设计的智能藏书管理平台，融合AI技术提供深度分析、个性化推荐和阅读成长追踪，让您的家庭图书馆管理更智能高效",
+      "startNow": "立即开始",
+      "learnMore": "了解更多",
+      "earlyBird": "前50名用户终身免费"
+    },
+    "stats": {
+      "earlyUsers": "早期用户",
+      "booksManaged": "图书管理",
+      "stability": "系统稳定性",
+      "service": "在线服务"
+    },
+    "features": {
+      "title": "AI驱动的家庭藏书管理",
+      "subtitle": "专为家庭设计的智能藏书分析与管理平台",
+      "items": {
+        "management": {
+          "title": "AI智能分析",
+          "description": "基于深度学习的藏书结构分析，自动识别家庭阅读偏好和收藏趋势",
+          "details": ["AI藏书分析", "阅读偏好识别", "智能分类建议", "家庭阅读模式分析"]
+        },
+        "search": {
+          "title": "智能推荐引擎",
+          "description": "AI驱动的个性化图书推荐，根据家庭阅读历史推荐优质书籍",
+          "details": ["个性化推荐", "阅读路径规划", "智能搜索", "相似书籍发现"]
+        },
+        "analytics": {
+          "title": "家庭阅读报告",
+          "description": "生成详细的家庭阅读分析报告，追踪每个成员的阅读成长轨迹",
+          "details": ["阅读成长报告", "家庭阅读统计", "阅读习惯分析", "知识图谱构建"]
+        },
+        "ai": {
+          "title": "AI阅读助手",
+          "description": "基于先进AI技术的智能阅读助手，提供个性化阅读建议和知识问答",
+          "details": ["智能阅读建议", "知识问答", "阅读计划制定", "学习路径推荐"]
+        }
+      }
+    },
+    "testimonials": {
+      "title": "用户评价",
+      "subtitle": "看看其他用户是如何使用书云的",
+      "items": [
+        {
+          "name": "张先生",
+          "role": "图书爱好者",
+          "content": "书云让我的藏书管理变得如此简单，AI推荐功能帮我发现了许多好书！"
+        },
+        {
+          "name": "李女士",
+          "role": "图书管理员",
+          "content": "批量添加功能大大提高了我的工作效率，强烈推荐！"
+        },
+        {
+          "name": "王老师",
+          "role": "教育工作者",
+          "content": "数据统计功能让我清楚了解自己的阅读习惯，非常实用。"
+        }
+      ]
+    },
+    "leaderboard": {
+      "title": "藏书排行榜",
+      "subtitle": "看看哪些用户拥有最多的图书收藏，点击用户名称可以查看他们的公开图书"
+    },
+    "cta": {
+      "title": "开始管理您的图书收藏",
+      "description": "立即注册，体验智能图书管理系统的强大功能",
+      "register": "免费注册",
+      "login": "立即登录"
+    },
+    "footer": {
+      "description": "专业的智能图书管理系统，让您的图书收藏管理更简单高效。",
+      "github": "GitHub 开源地址",
+      "copyright": "© 2024 书云. 保留所有权利."
+    }
+  }
+}
