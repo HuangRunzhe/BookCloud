@@ -133,10 +133,17 @@ export default function BookDetail() {
                         className="w-full h-full object-cover"
                         onError={(e) => {
                           console.error('图片加载失败:', e)
-                          // 如果Next.js Image失败，尝试使用普通img标签
+                          // 如果缩略图失败，回退到原图
                           const target = e.target as HTMLImageElement
+                          const currentSrc = (target as any).src || ''
+                          const original = getImageUrl(book.cover_image)
+                          if (!currentSrc.includes(original)) {
+                            ;(target as any).src = original
+                            return
+                          }
+                          // 原图也失败则降级为原生img（避免Image优化器缓存）
                           const fallbackImg = document.createElement('img')
-                          fallbackImg.src = getThumbUrl(book.cover_image) || getImageUrl(book.cover_image)
+                          fallbackImg.src = original
                           fallbackImg.alt = book.title
                           fallbackImg.className = 'w-full h-full object-cover'
                           target.parentNode?.replaceChild(fallbackImg, target)

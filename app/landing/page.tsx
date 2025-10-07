@@ -258,7 +258,7 @@ export default function LandingPage() {
                       </p>
                       {activeFeature === index && (
                         <ul className="mt-4 space-y-2">
-                          {feature.details.map((detail, detailIndex) => (
+                          {(feature.details as string[]).map((detail: string, detailIndex: number) => (
                             <li key={detailIndex} className="flex items-center text-blue-100">
                               <CheckCircle className="w-4 h-4 mr-2" />
                               {detail}

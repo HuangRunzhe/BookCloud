@@ -11,6 +11,8 @@ import Pagination from '@/components/Pagination'
 import PermissionGuard from '@/components/PermissionGuard'
 import { useAuth } from '@/contexts/AuthContext'
 import { getBooks, getBooksCount, getStats } from '@/lib/api'
+import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Home() {
   const router = useRouter()
@@ -227,6 +229,20 @@ export default function Home() {
             {/* 统计面板 */}
             {stats && <StatsPanel stats={stats} />}
             
+            {/* 用户交流群入口 */}
+            <div className="card-elevated p-6">
+              <h3 className="text-lg font-semibold text-secondary-800 mb-3">用户交流群</h3>
+              <div className="flex items-center space-x-4">
+                <div className="w-16 h-16 rounded-lg overflow-hidden bg-gray-100">
+                  <Image src="/Group1QR.png" alt="用户交流群二维码" width={64} height={64} className="w-full h-full object-cover" />
+                </div>
+                <div className="flex-1">
+                  <p className="text-secondary-600 text-sm mb-2">扫码或进入详情页查看大图</p>
+                  <Link href="/group" className="btn-secondary px-3 py-1 text-sm">查看二维码</Link>
+                </div>
+              </div>
+            </div>
+
             {/* AI对话 */}
             <AIChat onBookUpdate={handleBookUpdate} />
           </div>

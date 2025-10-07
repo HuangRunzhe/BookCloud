@@ -15,6 +15,7 @@ interface BookCardProps {
 
 export default function BookCard({ book, onBookUpdate }: BookCardProps) {
   const [isDeleting, setIsDeleting] = useState(false)
+  const [useOriginalImage, setUseOriginalImage] = useState(false)
 
   const handleDelete = async () => {
     if (!confirm('确定要删除这本书吗？')) return
@@ -38,7 +39,7 @@ export default function BookCard({ book, onBookUpdate }: BookCardProps) {
         <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-2 sm:mb-4 overflow-hidden cursor-pointer">
           {book.cover_image ? (
             <Image
-              src={getThumbUrl(book.cover_image) || getImageUrl(book.cover_image)}
+              src={useOriginalImage ? getImageUrl(book.cover_image) : (getThumbUrl(book.cover_image) || getImageUrl(book.cover_image))}
               alt={book.title}
               width={180}
               height={240}
@@ -46,6 +47,7 @@ export default function BookCard({ book, onBookUpdate }: BookCardProps) {
               loading="lazy"
               sizes="(max-width: 640px) 45vw, (max-width: 1024px) 22vw, 180px"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onError={() => setUseOriginalImage(true)}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
