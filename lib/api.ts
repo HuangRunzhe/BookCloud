@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { Book, BookCreate, BookUpdate, Stats, ChatRequest, ChatResponse } from '@/types'
+import { Book, BookCreate, BookUpdate, Stats, ChatRequest, ChatResponse, ReadingSession, ReadingStats } from '@/types'
 
 // 动态检测API地址
 const getApiBaseUrl = () => {
@@ -114,7 +114,29 @@ export const getStats = async (): Promise<Stats> => {
 
 // AI对话API
 export const chat = async (request: ChatRequest): Promise<ChatResponse> => {
-  const response = await api.post('/chat/', request)
+  // 避免 FastAPI 对结尾斜杠的 307 重定向，直接使用无斜杠路径
+  const response = await api.post('/chat', request)
+  return response.data
+}
+
+// 阅读计时 API
+export const startReading = async (bookId: number, note?: string): Promise<ReadingSession> => {
+  const response = await api.post('/reading/start', { book_id: bookId, note })
+  return response.data
+}
+
+export const stopReading = async (sessionId: number, note?: string): Promise<ReadingSession> => {
+  const response = await api.post('/reading/stop', { session_id: sessionId, note })
+  return response.data
+}
+
+export const getReadingStats = async (bookId: number): Promise<ReadingStats> => {
+  const response = await api.get(`/reading/stats/${bookId}`)
+  return response.data
+}
+
+export const addReadingManual = async (bookId: number, seconds: number, date?: string): Promise<ReadingSession> => {
+  const response = await api.post('/reading/manual', { book_id: bookId, seconds, reading_date: date })
   return response.data
 }
 

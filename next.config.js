@@ -12,7 +12,6 @@ const nextConfig = {
   // 图片优化
   images: {
     formats: ['image/avif', 'image/webp'],
-    domains: ['localhost', '192.168.5.15', 'bc.aikits.sbs', 'bcbk.aikits.sbs', 'soramvods.xyz'],
     remotePatterns: [
       {
         protocol: 'http',

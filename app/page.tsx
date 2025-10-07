@@ -200,7 +200,7 @@ export default function Home() {
 
             <div className="flex justify-between items-center mb-8">
               <div>
-                <h2 className="text-3xl font-bold gradient-text mb-2">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
                   📚 我的藏书
                 </h2>
                 <p className="text-secondary-600 text-lg">

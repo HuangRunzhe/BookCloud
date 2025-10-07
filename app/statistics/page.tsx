@@ -54,6 +54,8 @@ interface DetailedStats {
   top_authors: Array<{ name: string; count: number; percentage: number }>
   reading_trends: Array<{ month: string; books_read: number; books_added: number }>
   ai_insights: string
+  total_read_seconds?: number
+  today_read_seconds?: number
 }
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D', '#FFC658', '#FF7C7C']
@@ -65,6 +67,15 @@ export default function StatisticsPage() {
   const [loading, setLoading] = useState(true)
   const [aiInsights, setAiInsights] = useState('')
   const [aiLoading, setAiLoading] = useState(false)
+
+  const pad2 = (n: number) => (n < 10 ? `0${n}` : `${n}`)
+  const formatHMS = (seconds?: number) => {
+    const sec = Math.max(0, Math.floor(seconds || 0))
+    const h = Math.floor(sec / 3600)
+    const m = Math.floor((sec % 3600) / 60)
+    const s = sec % 60
+    return `${pad2(h)}:${pad2(m)}:${pad2(s)}`
+  }
 
   useEffect(() => {
     if (user) {
@@ -340,8 +351,8 @@ export default function StatisticsPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">本月新增</p>
-                  <p className="text-3xl font-bold text-orange-600">{stats.recent_books}</p>
+                  <p className="text-sm font-medium text-gray-600">今日阅读</p>
+                  <p className="text-3xl font-bold text-orange-600">{formatHMS(stats.today_read_seconds ?? 0)}</p>
                 </div>
                 <Clock className="h-8 w-8 text-orange-600" />
               </div>
@@ -422,6 +433,12 @@ export default function StatisticsPage() {
                 />
               </AreaChart>
             </ResponsiveContainer>
+          </div>
+
+          {/* 阅读时长概览 */}
+          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">阅读时长概览</h3>
+            <p className="text-gray-600">总计：<span className="font-semibold">{formatHMS(stats.total_read_seconds ?? 0)}</span>，今日：<span className="font-semibold">{formatHMS(stats.today_read_seconds ?? 0)}</span></p>
           </div>
 
           {/* 阅读目标 */}
