@@ -284,7 +284,7 @@ export default function LandingPage() {
                   {features[activeFeature].description}
                 </p>
                 <div className="space-y-3">
-                  {features[activeFeature].details.map((detail, index) => (
+                  {(features[activeFeature].details as string[]).map((detail: string, index: number) => (
                     <div key={index} className="flex items-center text-gray-700">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
                       {detail}
