@@ -128,20 +128,20 @@ export default function LandingPage() {
         />
       </Head>
       <div className="min-h-screen bg-white">
-      {/* 语言切换器 */}
-      <div className="fixed top-2 right-2 z-30 md:top-4 md:right-4">
-        <LanguageSwitcher />
-      </div>
-      
       {/* 导航栏 */}
       <nav className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center">
-              <Library className="w-8 h-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">
-                {locale === 'zh' ? '书云' : 'BookCloud'}
-              </span>
+            <div className="flex items-start">
+              <div className="flex items-center">
+                <Library className="w-8 h-8 text-blue-600" />
+                <span className="ml-2 text-xl font-bold text-gray-900">
+                  {locale === 'zh' ? '书云' : 'BookCloud'}
+                </span>
+              </div>
+              <div className="ml-3 mt-1">
+                <LanguageSwitcher />
+              </div>
             </div>
             <div className="flex items-center space-x-4">
               <Link href="/login" className="text-gray-600 hover:text-gray-900">
