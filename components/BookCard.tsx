@@ -44,6 +44,7 @@ export default function BookCard({ book, onBookUpdate }: BookCardProps) {
               width={180}
               height={240}
               quality={50}
+              unoptimized
               loading="lazy"
               sizes="(max-width: 640px) 45vw, (max-width: 1024px) 22vw, 180px"
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

@@ -129,7 +129,7 @@ export default function LandingPage() {
       </Head>
       <div className="min-h-screen bg-white">
       {/* 语言切换器 */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-2 right-2 z-30 md:top-4 md:right-4">
         <LanguageSwitcher />
       </div>
       

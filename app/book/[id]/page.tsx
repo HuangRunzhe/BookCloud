@@ -128,6 +128,7 @@ export default function BookDetail() {
                         width={600}
                         height={800}
                         quality={90}
+                        unoptimized
                         priority
                         sizes="(max-width: 1024px) 80vw, 400px"
                         className="w-full h-full object-cover"

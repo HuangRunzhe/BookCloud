@@ -128,7 +128,7 @@ export default function PromoPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
       {/* Language Switcher */}
-      <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-2 right-2 z-30 md:top-4 md:right-4">
         <LanguageSwitcher />
       </div>
       

@@ -33,7 +33,7 @@ export default function LanguageSwitcher() {
       <select
         value={locale}
         onChange={(e) => setLocale(e.target.value as Locale)}
-        className={`appearance-none bg-white border rounded-lg px-3 py-2 pr-8 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors shadow-lg ${
+        className={`appearance-none bg-white border rounded-md px-2 py-1 pr-6 text-xs md:text-sm md:px-3 md:py-2 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${
           isAutoDetected ? 'border-blue-300 bg-blue-50' : 'border-gray-300'
         }`}
         title={isAutoDetected ? '根据您的设备语言自动选择' : '选择界面语言'}
