@@ -211,7 +211,7 @@ export default function PaymentPage() {
                   </div>
                   <h3 className="text-xl font-bold text-secondary-800 mb-2">月费会员</h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-primary-600">¥12.9</span>
+                    <span className="text-4xl font-bold text-primary-600">¥8.9</span>
                     <span className="text-secondary-600 text-lg">/月</span>
                   </div>
                   <p className="text-secondary-600 mb-6">适合短期使用</p>
@@ -251,10 +251,10 @@ export default function PaymentPage() {
                   </div>
                   <h3 className="text-xl font-bold text-secondary-800 mb-2">年费会员</h3>
                   <div className="mb-4">
-                    <span className="text-4xl font-bold text-success-600">¥129</span>
+                    <span className="text-4xl font-bold text-success-600">¥89</span>
                     <span className="text-secondary-600 text-lg">/年</span>
                   </div>
-                  <p className="text-secondary-600 mb-6">相当于月费8折，更划算</p>
+                  <p className="text-secondary-600 mb-6">更划算</p>
                 </div>
                 <div className="space-y-3">
                   <button

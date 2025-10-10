@@ -116,6 +116,9 @@ export default function BookDetail() {
       setNote('')
       setFocusMode(false)
       await loadStats()
+      
+      // 通知首页更新统计数据
+      window.dispatchEvent(new CustomEvent('readingStatsUpdated'))
     } catch (e: any) {
       console.error('停止计时失败:', e)
       const msg = e?.response?.data?.detail || '停止计时失败，请重试'
@@ -128,6 +131,9 @@ export default function BookDetail() {
         setLocalStartMs(null)
         setFocusMode(false)
         await loadStats()
+        
+        // 通知首页更新统计数据
+        window.dispatchEvent(new CustomEvent('readingStatsUpdated'))
       } else {
         setToast('停止计时失败，请重试')
         setTimeout(() => setToast(null), 2000)
@@ -344,12 +350,6 @@ export default function BookDetail() {
 
                 {/* 详细信息 */}
                 <div className="space-y-4">
-                  {book.isbn && (
-                    <div>
-                      <h3 className="text-sm font-medium text-gray-700 mb-1">ISBN</h3>
-                      <p className="text-gray-900">{book.isbn}</p>
-                    </div>
-                  )}
 
                   {book.description && (
                     <div>
@@ -456,6 +456,10 @@ export default function BookDetail() {
                       setManualH(0); setManualM(0); setManualS(0)
                       setManualDate('')
                       await loadStats()
+                      
+                      // 通知首页更新统计数据
+                      window.dispatchEvent(new CustomEvent('readingStatsUpdated'))
+                      
                       setToast('已录入阅读时长')
                       setTimeout(() => setToast(null), 1500)
                     } catch (e) {

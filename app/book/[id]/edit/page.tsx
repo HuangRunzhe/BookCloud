@@ -20,7 +20,6 @@ export default function EditBook() {
   const [formData, setFormData] = useState<BookUpdate>({
     title: '',
     author: '',
-    isbn: '',
     published_date: '',
     description: '',
     category: '',
@@ -42,7 +41,6 @@ export default function EditBook() {
       setFormData({
         title: bookData.title,
         author: bookData.author,
-        isbn: bookData.isbn || '',
         published_date: bookData.published_date || '',
         description: bookData.description || '',
         category: bookData.category || '',
@@ -152,7 +150,6 @@ export default function EditBook() {
         ...formData,
         cover_image: coverImagePath || undefined,
         published_date: formData.published_date || undefined,
-        isbn: formData.isbn || undefined,
         description: formData.description || undefined,
         category: formData.category || undefined,
         review: formData.review || undefined
@@ -290,19 +287,6 @@ export default function EditBook() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    ISBN
-                  </label>
-                  <input
-                    type="text"
-                    name="isbn"
-                    value={formData.isbn}
-                    onChange={handleInputChange}
-                    className="input-field"
-                    placeholder="ISBN（可选）"
-                  />
-                </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">

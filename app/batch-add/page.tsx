@@ -12,7 +12,6 @@ interface BookItem {
   id: string
   title: string
   author: string
-  isbn?: string
   published_date?: string
   cover_image?: string
   description?: string
@@ -32,7 +31,6 @@ export default function BatchAddBooks() {
       id: `book_${nextId}`,
       title: '',
       author: '',
-      isbn: '',
       published_date: '',
       cover_image: '',
       description: '',
@@ -95,7 +93,6 @@ export default function BatchAddBooks() {
         booksWithCovers.push({
           title: book.title,
           author: book.author,
-          isbn: book.isbn || undefined,
           published_date: book.published_date || undefined,
           cover_image: coverImagePath || undefined,
           description: book.description || undefined,
@@ -155,10 +152,7 @@ export default function BatchAddBooks() {
             <h3 className="font-semibold text-blue-900 mb-2">使用说明</h3>
             <ul className="text-sm text-blue-800 space-y-1">
               <li>• 点击"添加图书"按钮添加新的图书条目</li>
-              <li>• 📱 点击"拍照上传"直接拍照ISBN条码（最简单）</li>
-              <li>• 拍照后使用手机扫码应用（微信、支付宝等）获取ISBN码</li>
-              <li>• 直接输入ISBN码可以自动获取图书信息</li>
-              <li>• 也可以手动填写图书信息</li>
+              <li>• 手动填写图书信息</li>
               <li>• 支持上传封面图片</li>
               <li>• 系统会自动生成图书描述和分类</li>
             </ul>
@@ -224,25 +218,6 @@ export default function BatchAddBooks() {
                       </div>
                     </div>
 
-                    {/* ISBN输入 */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
-                        ISBN码
-                      </label>
-                      <div className="space-y-2">
-                        <input
-                          type="text"
-                          value={book.isbn}
-                          onChange={(e) => updateBook(book.id, 'isbn', e.target.value)}
-                          className="input-field"
-                          placeholder="输入ISBN码（10位或13位）"
-                        />
-                        
-                        <div className="text-xs text-gray-500">
-                          💡 输入ISBN码后，系统会自动获取图书信息
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
                   {/* 右侧：图书信息表单 */}
@@ -274,18 +249,6 @@ export default function BatchAddBooks() {
                         />
                       </div>
 
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
-                          ISBN
-                        </label>
-                        <input
-                          type="text"
-                          value={book.isbn}
-                          onChange={(e) => updateBook(book.id, 'isbn', e.target.value)}
-                          className="input-field"
-                          placeholder="ISBN（可选）"
-                        />
-                      </div>
 
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">

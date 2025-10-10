@@ -19,7 +19,6 @@ export default function AddBook() {
   const [formData, setFormData] = useState<BookCreate>({
     title: '',
     author: '',
-    isbn: '',
     published_date: '',
     description: '',
     category: '',
@@ -253,7 +252,6 @@ export default function AddBook() {
         ...formData,
         cover_image: coverImagePath || undefined,
         published_date: formData.published_date || undefined,
-        isbn: formData.isbn || undefined,
         description: formData.description || undefined,
         category: formData.category || undefined
       }
@@ -377,19 +375,6 @@ export default function AddBook() {
                   />
                 </div>
 
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    ISBN
-                  </label>
-                  <input
-                    type="text"
-                    name="isbn"
-                    value={formData.isbn}
-                    onChange={handleInputChange}
-                    className="input-field"
-                    placeholder="ISBN（可选）"
-                  />
-                </div>
 
                 <div>
                   <div className="flex items-center justify-between mb-2">

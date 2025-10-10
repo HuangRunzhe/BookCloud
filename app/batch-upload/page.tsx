@@ -11,7 +11,6 @@ interface BookItem {
   id: string
   title: string
   author: string
-  isbn: string
   published_date: string
   description: string
   category: string
@@ -49,7 +48,6 @@ export default function BatchUpload() {
           id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
           title: '',
           author: '',
-          isbn: '',
           published_date: '',
           description: '',
           category: '',
@@ -196,7 +194,6 @@ export default function BatchUpload() {
       const bookData: BookCreate = {
         title: book.title,
         author: book.author,
-        isbn: book.isbn || undefined,
         published_date: book.published_date || undefined,
         cover_image: coverImagePath,
         description: book.description || undefined,
@@ -242,7 +239,6 @@ export default function BatchUpload() {
         const bookData: BookCreate = {
           title: book.title,
           author: book.author,
-          isbn: book.isbn || undefined,
           published_date: book.published_date || undefined,
           cover_image: coverImagePath,
           description: book.description || undefined,
@@ -403,19 +399,6 @@ export default function BatchUpload() {
                           />
                         </div>
 
-                        {/* ISBN */}
-                        <div>
-                          <label className="block text-sm font-medium text-gray-700 mb-1">
-                            ISBN
-                          </label>
-                          <input
-                            type="text"
-                            value={book.isbn}
-                            onChange={(e) => updateBook(book.id, 'isbn', e.target.value)}
-                            className="input-field"
-                            placeholder="ISBN（可选）"
-                          />
-                        </div>
 
                         {/* 出版日期 */}
                         <div>

@@ -33,10 +33,10 @@ export default function BookCard({ book, onBookUpdate }: BookCardProps) {
   }
 
   return (
-    <div className="book-card group">
+    <div className="group">
       {/* 封面图片 */}
       <Link href={`/book/${book.id}`} className="block">
-        <div className="aspect-[3/4] bg-gray-100 rounded-lg mb-2 sm:mb-4 overflow-hidden cursor-pointer">
+        <div className="aspect-[3/4] bg-gray-100 rounded-md mb-3 overflow-hidden cursor-pointer">
           {book.cover_image ? (
             <Image
               src={useOriginalImage ? getImageUrl(book.cover_image) : (getThumbUrl(book.cover_image) || getImageUrl(book.cover_image))}
@@ -47,7 +47,7 @@ export default function BookCard({ book, onBookUpdate }: BookCardProps) {
               unoptimized
               loading="lazy"
               sizes="(max-width: 640px) 45vw, (max-width: 1024px) 22vw, 180px"
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-200"
               onError={() => setUseOriginalImage(true)}
             />
           ) : (
@@ -59,51 +59,49 @@ export default function BookCard({ book, onBookUpdate }: BookCardProps) {
       </Link>
 
       {/* 图书信息 */}
-      <div className="space-y-1 sm:space-y-2">
+      <div className="space-y-2">
         <Link href={`/book/${book.id}`} className="block">
-          <h3 className="font-semibold text-gray-900 line-clamp-2 text-xs sm:text-sm hover:text-primary-600 transition-colors cursor-pointer">
+          <h3 className="font-medium text-gray-900 line-clamp-2 text-sm hover:text-gray-700 transition-colors cursor-pointer">
             {book.title}
           </h3>
         </Link>
         
-        <p className="text-xs sm:text-sm text-gray-600 line-clamp-1">
+        <p className="text-sm text-gray-600 line-clamp-1">
           {book.author}
         </p>
         
         {book.category && (
-          <span className="inline-block px-1 py-0.5 sm:px-2 sm:py-1 text-xs bg-primary-100 text-primary-800 rounded-full">
+          <span className="inline-block px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-md">
             {book.category}
           </span>
         )}
         
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center space-x-1 sm:space-x-2">
+          <span className="inline-flex items-center space-x-2">
             <span
-              className={`h-2 w-2 rounded-full ${book.status === '已读' ? 'bg-green-500' : 'bg-red-500'}`}
+              className={`h-2 w-2 rounded-full ${book.status === '已读' ? 'bg-gray-600' : 'bg-gray-400'}`}
             />
-            <span className={`text-xs sm:text-sm font-medium ${
-              book.status === '已读' ? 'text-green-600' : 'text-orange-600'
-            }`}>
+            <span className="text-sm font-medium text-gray-700">
               {book.status}
             </span>
           </span>
           
-          <div className="flex items-center space-x-1 sm:space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="flex items-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <Link
               href={`/book/${book.id}/edit`}
-              className="p-0.5 sm:p-1 text-gray-400 hover:text-primary-600 transition-colors"
+              className="p-1 text-gray-400 hover:text-gray-600 transition-colors"
               title="编辑"
             >
-              <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
+              <Edit className="h-4 w-4" />
             </Link>
             
             <button
               onClick={handleDelete}
               disabled={isDeleting}
-              className="p-0.5 sm:p-1 text-gray-400 hover:text-red-600 transition-colors disabled:opacity-50"
+              className="p-1 text-gray-400 hover:text-gray-600 transition-colors disabled:opacity-50"
               title="删除"
             >
-              <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
+              <Trash2 className="h-4 w-4" />
             </button>
           </div>
         </div>
